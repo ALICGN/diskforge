@@ -11,7 +11,9 @@ pub const VIDEO_EXTS: &[&str] = &[
     "mp4", "mkv", "avi", "mov", "wmv", "flv", "webm", "m4v", "ts", "mpg", "mpeg", "3gp", "mts",
     "m2ts", "vob",
 ];
-pub const AUDIO_EXTS: &[&str] = &["mp3", "flac", "wav", "aac", "ogg", "opus", "m4a", "wma", "aiff", "alac", "ape"];
+pub const AUDIO_EXTS: &[&str] = &[
+    "mp3", "flac", "wav", "aac", "ogg", "opus", "m4a", "wma", "aiff", "alac", "ape",
+];
 
 pub fn kind_of(ext: &str) -> &'static str {
     if IMAGE_EXTS.contains(&ext) {
@@ -76,11 +78,7 @@ pub fn read_meta(path_str: &str, want_probe: bool) -> FileMeta {
     {
         use std::os::unix::fs::MetadataExt;
         meta.inode = md.ino();
-        if meta.btime_ms.is_none() {
-            meta.ctime_ms = Some(md.ctime() * 1000);
-        } else {
-            meta.ctime_ms = Some(md.ctime() * 1000);
-        }
+        meta.ctime_ms = Some(md.ctime() * 1000);
     }
 
     if !want_probe {
@@ -125,8 +123,11 @@ fn json_num(v: &serde_json::Value, key: &str) -> Option<f64> {
     })
 }
 
+/// Resolution, duration (seconds) and bitrate (bit/s) as reported by ffprobe.
+pub type ProbeInfo = (Option<u32>, Option<u32>, Option<f64>, Option<u64>);
+
 /// ffprobe (if installed) for resolution, duration and bitrate.
-pub fn ffprobe(path: &Path) -> Option<(Option<u32>, Option<u32>, Option<f64>, Option<u64>)> {
+pub fn ffprobe(path: &Path) -> Option<ProbeInfo> {
     let out = Command::new("ffprobe")
         .args([
             "-v",

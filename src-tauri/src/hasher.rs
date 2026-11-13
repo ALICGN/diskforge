@@ -44,7 +44,13 @@ pub(crate) struct Counters {
 }
 
 impl Counters {
-    fn emit(&self, started: Instant, last: &Mutex<Instant>, current: &str, emit: &dyn Fn(Progress)) {
+    fn emit(
+        &self,
+        started: Instant,
+        last: &Mutex<Instant>,
+        current: &str,
+        emit: &dyn Fn(Progress),
+    ) {
         let mut guard = match last.lock() {
             Ok(g) => g,
             Err(p) => p.into_inner(),
@@ -194,10 +200,7 @@ where
 
     let mut buckets: HashMap<(u64, String), Vec<Cand>> = HashMap::new();
     for c in stage1 {
-        buckets
-            .entry((c.size, c.hash.clone()))
-            .or_default()
-            .push(c);
+        buckets.entry((c.size, c.hash.clone())).or_default().push(c);
     }
 
     // Stage 2: full hash for partial-hash buckets that still collide.

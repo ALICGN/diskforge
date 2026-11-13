@@ -61,11 +61,48 @@ impl CategoryConfig {
                     "Programme & Skripte",
                     "#4ade80",
                     &[
-                        "exe", "msi", "deb", "rpm", "pkg.tar.zst", "appimage", "sh", "bash", "zsh",
-                        "fish", "py", "rs", "js", "ts", "jsx", "tsx", "json", "yaml", "yml",
-                        "toml", "ini", "conf", "service", "desktop", "patch", "diff", "go", "c",
-                        "h", "cpp", "hpp", "java", "kt", "lua", "php", "rb", "sql", "html", "css",
-                        "scss", "vue", "svelte",
+                        "exe",
+                        "msi",
+                        "deb",
+                        "rpm",
+                        "pkg.tar.zst",
+                        "appimage",
+                        "sh",
+                        "bash",
+                        "zsh",
+                        "fish",
+                        "py",
+                        "rs",
+                        "js",
+                        "ts",
+                        "jsx",
+                        "tsx",
+                        "json",
+                        "yaml",
+                        "yml",
+                        "toml",
+                        "ini",
+                        "conf",
+                        "service",
+                        "desktop",
+                        "patch",
+                        "diff",
+                        "go",
+                        "c",
+                        "h",
+                        "cpp",
+                        "hpp",
+                        "java",
+                        "kt",
+                        "lua",
+                        "php",
+                        "rb",
+                        "sql",
+                        "html",
+                        "css",
+                        "scss",
+                        "vue",
+                        "svelte",
                     ],
                 ),
                 cat(UNKNOWN_CATEGORY, "#94a3b8", &[]),
@@ -162,7 +199,9 @@ impl CategoryConfig {
 
         for (ext, (count, size)) in by_ext.into_iter() {
             let cat_name = self.category_for(&ext, &map);
-            let idx = *index_by_name.get(&cat_name).unwrap_or(&stats.len().saturating_sub(1));
+            let idx = *index_by_name
+                .get(&cat_name)
+                .unwrap_or(&stats.len().saturating_sub(1));
             let label = if ext.is_empty() {
                 NO_EXT_KEY.to_string()
             } else {
@@ -180,7 +219,8 @@ impl CategoryConfig {
         }
 
         for s in stats.iter_mut() {
-            s.exts.sort_by(|a, b| b.size.cmp(&a.size).then(b.count.cmp(&a.count)));
+            s.exts
+                .sort_by(|a, b| b.size.cmp(&a.size).then(b.count.cmp(&a.count)));
         }
         stats
     }
@@ -242,7 +282,10 @@ mod tests {
         cfg.normalize();
         let map = cfg.ext_map();
         assert_eq!(cfg.category_for("jpg", &map), "Bilder");
-        assert_eq!(cfg.category_for("JPG".to_lowercase().as_str(), &map), "Bilder");
+        assert_eq!(
+            cfg.category_for("JPG".to_lowercase().as_str(), &map),
+            "Bilder"
+        );
         assert_eq!(cfg.category_for("zst", &map), "Archive");
         assert_eq!(cfg.category_for("pkg.tar.zst", &map), "Programme & Skripte");
         assert_eq!(cfg.category_for("qqq", &map), UNKNOWN_CATEGORY);
@@ -254,10 +297,30 @@ mod tests {
         let mut cfg = CategoryConfig::defaults();
         cfg.normalize();
         let entries = vec![
-            FileEntry { path: "/a/x.jpg".into(), name: "x.jpg".into(), ext: "jpg".into(), size: 10 },
-            FileEntry { path: "/a/y.JPG".into(), name: "y.JPG".into(), ext: "jpg".into(), size: 20 },
-            FileEntry { path: "/a/z.qqq".into(), name: "z.qqq".into(), ext: "qqq".into(), size: 5 },
-            FileEntry { path: "/a/README".into(), name: "README".into(), ext: "".into(), size: 3 },
+            FileEntry {
+                path: "/a/x.jpg".into(),
+                name: "x.jpg".into(),
+                ext: "jpg".into(),
+                size: 10,
+            },
+            FileEntry {
+                path: "/a/y.JPG".into(),
+                name: "y.JPG".into(),
+                ext: "jpg".into(),
+                size: 20,
+            },
+            FileEntry {
+                path: "/a/z.qqq".into(),
+                name: "z.qqq".into(),
+                ext: "qqq".into(),
+                size: 5,
+            },
+            FileEntry {
+                path: "/a/README".into(),
+                name: "README".into(),
+                ext: "".into(),
+                size: 3,
+            },
         ];
         let stats = cfg.aggregate(&entries);
         let bilder = stats.iter().find(|s| s.name == "Bilder").unwrap();

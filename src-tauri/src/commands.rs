@@ -1,8 +1,6 @@
 use crate::categories::{load_categories, save_categories as write_categories};
 use crate::models::CategoryConfig;
-use crate::models::{
-    DupGroup, FileEntry, FileMeta, LogBatch, MountInfo, Progress, ScanSummary,
-};
+use crate::models::{DupGroup, FileEntry, FileMeta, LogBatch, MountInfo, Progress, ScanSummary};
 use crate::mover::{self, DupPolicy, SortOptions, Structure, UndoResult};
 use crate::scanner::{self, ScanOptions};
 use rayon::prelude::*;
@@ -206,7 +204,7 @@ pub async fn start_scan(
     let threads = num_cpus::get();
 
     let summary = tauri::async_runtime::spawn_blocking(move || {
-        let raw = scanner::scan_tree(&path, &scan_opts, &cancel, |p| emit(p));
+        let raw = scanner::scan_tree(&path, &scan_opts, &cancel, emit);
         let categories = cats.aggregate(&raw.entries);
         let summary = ScanSummary {
             root: root.to_string(),
@@ -267,7 +265,7 @@ pub async fn find_duplicates(
     };
 
     let (groups, cancelled) = tauri::async_runtime::spawn_blocking(move || {
-        crate::hasher::find_duplicates(&entries, &opts, &cancel, move |p| emit(p))
+        crate::hasher::find_duplicates(&entries, &opts, &cancel, emit)
     })
     .await
     .map_err(|e| e.to_string())?;
@@ -374,7 +372,12 @@ pub async fn execute_sort(
         let moved_src: HashSet<&str> = batch
             .ops
             .iter()
-            .filter(|o| matches!(o.action.as_str(), "moved" | "copied" | "deleted" | "duplicate-moved"))
+            .filter(|o| {
+                matches!(
+                    o.action.as_str(),
+                    "moved" | "copied" | "deleted" | "duplicate-moved"
+                )
+            })
             .map(|o| o.src.as_str())
             .collect();
         let mut entries = st.entries.lock().unwrap();

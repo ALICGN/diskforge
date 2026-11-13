@@ -34,7 +34,10 @@ const COMPOUND_EXTS: &[&str] = &[
 ];
 
 pub fn is_ignored_dir(name: &str, extra: &[String]) -> bool {
-    if IGNORED_DIR_NAMES.iter().any(|n| n.eq_ignore_ascii_case(name)) {
+    if IGNORED_DIR_NAMES
+        .iter()
+        .any(|n| n.eq_ignore_ascii_case(name))
+    {
         return true;
     }
     if IGNORED_DIR_PREFIXES.iter().any(|p| {
@@ -288,11 +291,7 @@ where
                 if dt >= Duration::from_millis(220) {
                     gate.0 = Instant::now();
                     let (files, dirs, bytes) = if let Ok(a) = acc.lock() {
-                        (
-                            a.files + buf.files,
-                            a.dirs + buf.dirs,
-                            a.bytes + buf.bytes,
-                        )
+                        (a.files + buf.files, a.dirs + buf.dirs, a.bytes + buf.bytes)
                     } else {
                         (buf.files, buf.dirs, buf.bytes)
                     };
@@ -349,8 +348,8 @@ where
 mod tests {
     use super::*;
     use std::fs;
-    use std::path::PathBuf;
     use std::io::Write;
+    use std::path::PathBuf;
 
     fn tmpdir(tag: &str) -> PathBuf {
         let p = std::env::temp_dir().join(format!("df-scan-{}-{}", tag, std::process::id()));
@@ -400,7 +399,10 @@ mod tests {
         assert!(res.entries.iter().any(|e| e.ext == "mp4"));
 
         // non-recursive
-        let opts = ScanOptions { recursive: false, ..Default::default() };
+        let opts = ScanOptions {
+            recursive: false,
+            ..Default::default()
+        };
         let flat = scan_tree(&root, &opts, &cancel, |_p| {});
         assert_eq!(flat.files, 3);
         let _ = fs::remove_dir_all(&root);

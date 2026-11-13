@@ -103,9 +103,28 @@ pub fn is_reserved_name(stem: &str) -> bool {
     let base = stem.split('.').next().unwrap_or("").to_ascii_uppercase();
     matches!(
         base.as_str(),
-        "CON" | "PRN" | "AUX" | "NUL" | "COM1" | "COM2" | "COM3" | "COM4" | "COM5" | "COM6"
-            | "COM7" | "COM8" | "COM9" | "LPT1" | "LPT2" | "LPT3" | "LPT4" | "LPT5" | "LPT6"
-            | "LPT7" | "LPT8" | "LPT9"
+        "CON"
+            | "PRN"
+            | "AUX"
+            | "NUL"
+            | "COM1"
+            | "COM2"
+            | "COM3"
+            | "COM4"
+            | "COM5"
+            | "COM6"
+            | "COM7"
+            | "COM8"
+            | "COM9"
+            | "LPT1"
+            | "LPT2"
+            | "LPT3"
+            | "LPT4"
+            | "LPT5"
+            | "LPT6"
+            | "LPT7"
+            | "LPT8"
+            | "LPT9"
     )
 }
 
@@ -181,7 +200,8 @@ fn copy_verified(src: &Path, dst: &Path, preserve_mtime: bool) -> std::io::Resul
         }
         if preserve_mtime {
             if let Ok(mtime) = md.modified() {
-                let _ = filetime::set_file_mtime(&part, filetime::FileTime::from_system_time(mtime));
+                let _ =
+                    filetime::set_file_mtime(&part, filetime::FileTime::from_system_time(mtime));
             }
         }
         let _ = std::fs::set_permissions(&part, md.permissions());
@@ -204,7 +224,10 @@ fn move_file(src: &Path, dst: &Path, preserve_mtime: bool) -> Result<&'static st
             let rename_msg = err.to_string();
             match copy_verified(src, dst, preserve_mtime) {
                 Ok(()) => match std::fs::remove_file(src) {
-                    Ok(()) => Ok(if cross_device { "copied" } else { "copied" }),
+                    Ok(()) => {
+                        let _ = cross_device;
+                        Ok("copied")
+                    }
                     Err(remove_err) => Err(format!(
                         "kopiert, Quelle konnte nicht gelöscht werden: {}",
                         remove_err
@@ -681,8 +704,13 @@ mod tests {
 
     fn entries_of(root: &Path) -> Vec<FileEntry> {
         let cancel = AtomicBool::new(false);
-        crate::scanner::scan_tree(root, &crate::scanner::ScanOptions::default(), &cancel, |_p| {})
-            .entries
+        crate::scanner::scan_tree(
+            root,
+            &crate::scanner::ScanOptions::default(),
+            &cancel,
+            |_p| {},
+        )
+        .entries
     }
 
     fn opts(root: &Path, target: &Path, structure: Structure, dry: bool) -> SortOptions {
@@ -769,7 +797,14 @@ mod tests {
         let entries = entries_of(&root);
         let cancel = AtomicBool::new(false);
         let target = tmpdir("modes-target");
-        let b = sort_files(&cfg(), &entries, &opts(&root, &target, Structure::ExtOnly, false), &cancel, &|_p| {}).unwrap();
+        let b = sort_files(
+            &cfg(),
+            &entries,
+            &opts(&root, &target, Structure::ExtOnly, false),
+            &cancel,
+            &|_p| {},
+        )
+        .unwrap();
         assert_eq!(b.moved, 1);
         assert!(target.join("JPG/a.jpg").exists());
         let _ = fs::remove_dir_all(&root);
@@ -786,7 +821,8 @@ mod tests {
         let entries = entries_of(&root);
         let cancel = AtomicBool::new(false);
         let mut o = opts(&root, &target, Structure::CategoryExt, false);
-        o.dup_paths.insert(root.join("dup.jpg").to_string_lossy().to_string());
+        o.dup_paths
+            .insert(root.join("dup.jpg").to_string_lossy().to_string());
         let b = sort_files(&cfg(), &entries, &o, &cancel, &|_p| {}).unwrap();
         assert_eq!(b.skipped, 1);
         assert_eq!(b.moved, 1);
@@ -810,7 +846,14 @@ mod tests {
         let target = tmpdir("undo-target");
         let entries = entries_of(&root);
         let cancel = AtomicBool::new(false);
-        let b = sort_files(&cfg(), &entries, &opts(&root, &target, Structure::CategoryExt, false), &cancel, &|_p| {}).unwrap();
+        let b = sort_files(
+            &cfg(),
+            &entries,
+            &opts(&root, &target, Structure::CategoryExt, false),
+            &cancel,
+            &|_p| {},
+        )
+        .unwrap();
         assert!(target.join("Bilder/JPG/u1.jpg").exists());
         let res = undo_batch(&b.id).unwrap();
         assert_eq!(res.restored, 2);

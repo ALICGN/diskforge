@@ -49,7 +49,9 @@ fn is_removable(source: &str) -> bool {
     if !dev.starts_with("sd") && !dev.starts_with("nvme") && !dev.starts_with("mmcblk") {
         return false;
     }
-    let base: String = dev.trim_end_matches(|c: char| c.is_ascii_digit()).to_string();
+    let base: String = dev
+        .trim_end_matches(|c: char| c.is_ascii_digit())
+        .to_string();
     let base = base.trim_end_matches('p').to_string();
     let flag = std::fs::read_to_string(format!("/sys/block/{}/removable", base))
         .unwrap_or_default()
@@ -77,7 +79,12 @@ fn parse_mounts(text: &str) -> Vec<RawMount> {
         let fs = parts[2].to_string();
         let options = parts[3];
         let ro = options.split(',').any(|o| o == "ro");
-        out.push(RawMount { source, path, fs, ro });
+        out.push(RawMount {
+            source,
+            path,
+            fs,
+            ro,
+        });
     }
     out
 }
@@ -181,7 +188,10 @@ server:/export /mnt/nfs nfs4 rw 0 0
 
     #[test]
     fn unescape_works() {
-        assert_eq!(unescape_mount("/run/media/a/My\\040Disk"), "/run/media/a/My Disk");
+        assert_eq!(
+            unescape_mount("/run/media/a/My\\040Disk"),
+            "/run/media/a/My Disk"
+        );
         assert_eq!(unescape_mount("plain"), "plain");
     }
 
@@ -194,7 +204,10 @@ server:/export /mnt/nfs nfs4 rw 0 0
         assert!(paths.contains(&"/run/media/ali/Externe HD"));
         assert!(!paths.contains(&"/boot"));
         assert!(!paths.iter().any(|p| p.contains("snapd")));
-        let ext = filtered.iter().find(|m| m.path.contains("Externe")).unwrap();
+        let ext = filtered
+            .iter()
+            .find(|m| m.path.contains("Externe"))
+            .unwrap();
         assert!(ext.ro);
         assert_eq!(ext.fs, "fuseblk");
     }

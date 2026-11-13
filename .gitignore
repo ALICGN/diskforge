@@ -25,3 +25,6 @@ STATUS.md
 *.log
 tmp/
 testdata/
+
+# Vendored Crates (cargo vendor, nur als Release-Asset)
+src-tauri/vendor/

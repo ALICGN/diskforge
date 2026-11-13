@@ -1,0 +1,22 @@
+pkgbase = fylr-bin
+	pkgdesc = Fast disk analyzer, duplicate finder (BLAKE3) and file organizer for Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ALICGN/fylr
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	optdepends = ffmpeg: video metadata, duration and bitrate
+	optdepends = ntfs-3g: write access on NTFS volumes
+	provides = fylr
+	conflicts = fylr
+	conflicts = fylr-git
+	options = !strip
+	options = !debug
+	source = https://github.com/ALICGN/fylr/releases/download/v0.2.0/Fylr_0.2.0_amd64.deb
+	sha256sums = 059cdd8302c4802812c69e10af140c1db027b509b8d54cde4dcb7c8734471a14
+
+pkgname = fylr-bin

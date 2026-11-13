@@ -1,0 +1,31 @@
+# Maintainer: Ali Utlu <alicgn at users.noreply.github.com>
+pkgname=fylr-bin
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Fast disk analyzer, duplicate finder (BLAKE3) and file organizer for Linux"
+arch=('x86_64')
+url="https://github.com/ALICGN/fylr"
+license=('MIT')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg')
+optdepends=('ffmpeg: video metadata, duration and bitrate'
+            'ntfs-3g: write access on NTFS volumes')
+provides=('fylr')
+conflicts=('fylr' 'fylr-git')
+options=('!strip' '!debug')
+source=("https://github.com/ALICGN/fylr/releases/download/v${pkgver}/Fylr_${pkgver}_amd64.deb")
+sha256sums=('059cdd8302c4802812c69e10af140c1db027b509b8d54cde4dcb7c8734471a14')
+
+package() {
+  bsdtar -xf "${srcdir}/Fylr_${pkgver}_amd64.deb" -C "${srcdir}"
+  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+
+  # Desktop-Datei mit konsistentem Namen und StartupWMClass
+  install -d "${pkgdir}/usr/share/applications"
+  sed -e 's/^Name=.*/Name=Fylr/' \
+      -e 's/^StartupWMClass=.*/StartupWMClass=fylr/' \
+      "${pkgdir}/usr/share/applications/Fylr.desktop" \
+      > "${pkgdir}/usr/share/applications/fylr.desktop"
+  rm -f "${pkgdir}/usr/share/applications/Fylr.desktop"
+
+  chmod 755 "${pkgdir}/usr/bin/fylr"
+}

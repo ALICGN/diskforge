@@ -124,6 +124,10 @@ npm run tauri build -- --no-bundle
 
 Das Release-Binary liegt danach unter `src-tauri/target/release/fylr` (ca. 7 MB).
 
+**Pakete:** Fertige Builds liegen unter
+[Releases](https://github.com/ALICGN/fylr/releases) (`.deb`, `.AppImage`),
+AUR-Paket: `fylr-bin` (siehe [`docs/PACKAGING.md`](docs/PACKAGING.md)).
+
 **Deinstallieren:**
 ```bash
 rm ~/.local/bin/fylr ~/.local/share/applications/fylr.desktop

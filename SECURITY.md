@@ -11,7 +11,7 @@ Vorgehen ab. Bitte keine Details veröffentlichen, bevor ein Fix verfügbar ist.
 
 ## Relevante Angriffsflächen
 
-DiskForge läuft mit den Rechten des angemeldeten Nutzers und darf bewusst
+Fylr läuft mit den Rechten des angemeldeten Nutzers und darf bewusst
 Dateien verschieben und löschen. Deshalb gilt:
 
 - **Löschen** ist nur über die Duplikat-Richtlinie „endgültig löschen" möglich
@@ -22,7 +22,7 @@ Dateien verschieben und löschen. Deshalb gilt:
 - Das Tauri-`assetProtocol` ist auf `$HOME/**`, `/home/**`, `/run/media/**`,
   `/media/**` und `/mnt/**` beschränkt; die CSP erlaubt kein Inline-JavaScript.
 - Es werden keine Telemetriedaten gesendet; alle Zustände liegen lokal in
-  `~/.config/diskforge/`.
+  `~/.config/fylr/`.
 
 ## Unterstützte Versionen
 

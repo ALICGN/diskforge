@@ -1,18 +1,18 @@
 [package]
-name = "diskforge"
+name = "fylr"
 version = "0.1.0"
 description = "Fast disk analyzer, duplicate finder (BLAKE3) and file organizer for Linux"
 authors = ["Ali Utlu"]
 edition = "2021"
 rust-version = "1.77"
 license = "MIT"
-repository = "https://github.com/ALICGN/diskforge"
-homepage = "https://github.com/ALICGN/diskforge"
+repository = "https://github.com/ALICGN/fylr"
+homepage = "https://github.com/ALICGN/fylr"
 keywords = ["tauri", "disk-analyzer", "duplicates", "blake3", "file-organizer"]
 categories = ["filesystem", "gui"]
 
 [lib]
-name = "diskforge_lib"
+name = "fylr_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

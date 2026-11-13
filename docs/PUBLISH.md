@@ -6,8 +6,8 @@ Interne Checkliste für den ersten Upload und die Repo-Einstellungen.
 
 ```bash
 gh auth login                     # GitHub.com → HTTPS → Login via Browser
-cd ~/projekte/diskforge
-gh repo create diskforge --public --source=. --remote=origin \
+cd ~/projekte/fylr
+gh repo create fylr --public --source=. --remote=origin \
   --description "Schneller Disk-Analyzer, Duplikatfinder (BLAKE3) und Dateisortierer für Linux – Tauri 2, Rust, Svelte 5" \
   --push
 ```
@@ -15,7 +15,7 @@ gh repo create diskforge --public --source=. --remote=origin \
 Ohne `gh`:
 
 ```bash
-git remote add origin git@github.com:ALICGN/diskforge.git
+git remote add origin git@github.com:ALICGN/fylr.git
 git push -u origin main
 ```
 
@@ -70,7 +70,7 @@ gh label create "performance"      -c fbca04 -d "Geschwindigkeit, Speicher"
 ## 4. Erstes Release
 
 ```bash
-git tag v0.1.0 -m "DiskForge 0.1.0"
+git tag v0.1.0 -m "Fylr 0.1.0"
 git push origin v0.1.0        # löst .github/workflows/release.yml aus
 ```
 
@@ -79,7 +79,7 @@ dort Release-Notes aus `CHANGELOG.md` einsetzen und veröffentlichen.
 
 ## 5. Danach
 
-- Repository auf [GitHub Social Preview](https://github.com/ALICGN/diskforge/settings)
+- Repository auf [GitHub Social Preview](https://github.com/ALICGN/fylr/settings)
   setzen: `docs/screenshots/overview.png` (1280 × 640 empfohlen).
 - In `README.md` die Roadmap-Punkte pflegen, sobald Issues existieren.
 - Screenshots neu erzeugen: `./scripts/make-demo-data.sh`, App starten,

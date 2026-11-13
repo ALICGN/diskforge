@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/screenshots/overview.png" alt="DiskForge – Übersicht mit Scan-Ergebnis" width="900">
+<img src="docs/screenshots/overview.png" alt="Fylr – Übersicht mit Scan-Ergebnis" width="900">
 
-# DiskForge
+# Fylr
 
 **Festplatten scannen. Duplikate finden. Aufräumen — in Sekunden.**
 
@@ -19,9 +19,9 @@ gebaut mit **Tauri 2, Rust und Svelte 5**.
 
 ---
 
-## Was macht DiskForge?
+## Was macht Fylr?
 
-DiskForge ist für den unangenehmen Teil der Datenpflege gebaut: eine externe
+Fylr ist für den unangenehmen Teil der Datenpflege gebaut: eine externe
 NTFS-Platte mit 2,6 TB, 78.000 Dateien und jede Menge Duplikate. Statt Dateimanager
 und Shell-Skripten gibt es eine einzige Oberfläche, die in Sekunden weiß, was auf
 der Platte liegt — und die aufräumen kann, ohne Daten zu riskieren.
@@ -56,7 +56,7 @@ Sieben Standardkategorien mit ~124 Endungen, im UI frei editierbar:
 
 - Eigene Kategorien anlegen (Name + Farbe), Endungen per Chip hinzufügen/entfernen.
 - Endungen zwischen Kategorien verschieben; Konflikte werden erkannt und markiert.
-- Gespeichert in `~/.config/diskforge/categories.json`, „Standard" stellt alles zurück.
+- Gespeichert in `~/.config/fylr/categories.json`, „Standard" stellt alles zurück.
 
 ### Duplikate
 1. **Stufe 1:** Gruppierung nach exakter Byte-Größe.
@@ -89,7 +89,7 @@ Vergleichsansicht pro Gruppe:
   (mit Sicherheitsabfrage).
 
 ### Protokoll & Undo
-Jeder Lauf landet in `~/.config/diskforge/move_log.json` (max. 30 Batches) mit
+Jeder Lauf landet in `~/.config/fylr/move_log.json` (max. 30 Batches) mit
 Quelle, Ziel, Aktion, Bytes und Fehlern. Der letzte Vorgang lässt sich vollständig
 rückgängig machen — inklusive Wiederherstellung der Ordnerstruktur.
 
@@ -97,8 +97,8 @@ rückgängig machen — inklusive Wiederherstellung der Ordnerstruktur.
 
 ### Fertiges Paket (empfohlen)
 ```bash
-git clone https://github.com/ALICGN/diskforge.git
-cd diskforge
+git clone https://github.com/ALICGN/fylr.git
+cd fylr
 ./install-desktop.sh          # nach dem Build, siehe unten
 ```
 
@@ -122,12 +122,12 @@ npm run tauri build -- --no-bundle
 ./install-desktop.sh         # installiert nach ~/.local/{bin,share}, Menüeintrag inklusive
 ```
 
-Das Release-Binary liegt danach unter `src-tauri/target/release/diskforge` (ca. 7 MB).
+Das Release-Binary liegt danach unter `src-tauri/target/release/fylr` (ca. 7 MB).
 
 **Deinstallieren:**
 ```bash
-rm ~/.local/bin/diskforge ~/.local/share/applications/diskforge.desktop
-rm ~/.local/share/icons/hicolor/*/apps/diskforge.*
+rm ~/.local/bin/fylr ~/.local/share/applications/fylr.desktop
+rm ~/.local/share/icons/hicolor/*/apps/fylr.*
 kbuildsycoca6
 ```
 
@@ -186,7 +186,7 @@ npm run check                   # svelte-check
 | ![](docs/screenshots/regeln.png) | ![](docs/screenshots/protokoll.png) |
 
 Demo-Daten für eigene Screenshots: `./scripts/make-demo-data.sh` (erzeugt
-`~/diskforge-demo` mit Bildern, Videos, Audio, Archiven und echten Duplikaten).
+`~/fylr-demo` mit Bildern, Videos, Audio, Archiven und echten Duplikaten).
 
 ## Roadmap
 

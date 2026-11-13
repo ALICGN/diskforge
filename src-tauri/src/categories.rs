@@ -232,8 +232,8 @@ impl CategoryConfig {
 }
 
 pub fn config_dir() -> PathBuf {
-    // DISKFORGE_HOME is used by the test-suite to keep logs out of the real profile.
-    if let Ok(custom) = std::env::var("DISKFORGE_HOME") {
+    // FYLR_HOME is used by the test-suite to keep logs out of the real profile.
+    if let Ok(custom) = std::env::var("FYLR_HOME") {
         if !custom.trim().is_empty() {
             let dir = PathBuf::from(custom);
             let _ = std::fs::create_dir_all(&dir);
@@ -241,7 +241,7 @@ pub fn config_dir() -> PathBuf {
         }
     }
     let base = dirs::config_dir().unwrap_or_else(|| PathBuf::from("."));
-    let dir = base.join("diskforge");
+    let dir = base.join("fylr");
     let _ = std::fs::create_dir_all(&dir);
     dir
 }

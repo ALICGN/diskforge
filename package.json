@@ -1,5 +1,5 @@
 {
-  "name": "diskforge",
+  "name": "fylr",
   "version": "0.1.0",
   "private": true,
   "description": "Schneller Disk-Analyzer, Duplikatfinder (BLAKE3) und Dateisortierer für Linux – Tauri 2, Rust und Svelte 5",
@@ -7,12 +7,12 @@
   "author": "Ali Utlu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ALICGN/diskforge.git"
+    "url": "git+https://github.com/ALICGN/fylr.git"
   },
   "bugs": {
-    "url": "https://github.com/ALICGN/diskforge/issues"
+    "url": "https://github.com/ALICGN/fylr/issues"
   },
-  "homepage": "https://github.com/ALICGN/diskforge#readme",
+  "homepage": "https://github.com/ALICGN/fylr#readme",
   "keywords": [
     "tauri",
     "rust",

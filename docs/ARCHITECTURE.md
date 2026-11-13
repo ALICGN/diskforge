@@ -62,10 +62,10 @@ Fehler pro Datei sammeln statt abzubrechen.
 
 | Datei | Inhalt | Limit |
 |---|---|---|
-| `~/.config/diskforge/categories.json` | Kategorien + Endungen | – |
-| `~/.config/diskforge/move_log.json` | Sortierprotokoll für Undo | 30 Batches |
+| `~/.config/fylr/categories.json` | Kategorien + Endungen | – |
+| `~/.config/fylr/move_log.json` | Sortierprotokoll für Undo | 30 Batches |
 
-`DISKFORGE_HOME` überschreibt das Konfigurationsverzeichnis — so laufen Tests
+`FYLR_HOME` überschreibt das Konfigurationsverzeichnis — so laufen Tests
 isoliert und schreiben nie ins echte Profil.
 
 ## Nebenläufigkeit
@@ -90,4 +90,4 @@ isoliert und schreiben nie ins echte Profil.
 - `structuredClone` auf `$state`-Proxies wirft `DataCloneError` → `$state.snapshot()`.
 - Byte-Slicing auf Dateinamen (`name[..n]`) bricht bei UTF-8 → `as_bytes()` verwenden.
 - `rename` über Gerätegrenzen liefert `EXDEV` → Kopier-Fallback nötig.
-- Bei Tests immer `DISKFORGE_HOME` setzen, sonst landet das Log im echten Profil.
+- Bei Tests immer `FYLR_HOME` setzen, sonst landet das Log im echten Profil.

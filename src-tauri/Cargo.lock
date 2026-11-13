@@ -674,26 +674,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "diskforge"
-version = "0.1.0"
-dependencies = [
- "blake3",
- "dirs",
- "filetime",
- "ignore",
- "imagesize",
- "libc",
- "mp4parse",
- "num_cpus",
- "rayon",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "tauri-plugin-dialog",
-]
-
-[[package]]
 name = "dispatch2"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1026,6 +1006,26 @@ dependencies = [
  "memchr",
  "pin-project-lite",
  "slab",
+]
+
+[[package]]
+name = "fylr"
+version = "0.1.0"
+dependencies = [
+ "blake3",
+ "dirs",
+ "filetime",
+ "ignore",
+ "imagesize",
+ "libc",
+ "mp4parse",
+ "num_cpus",
+ "rayon",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-dialog",
 ]
 
 [[package]]

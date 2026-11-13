@@ -122,7 +122,7 @@
     <h2 class="text-[13px] font-semibold">Kategorie-Regeln</h2>
     <span class="text-[11px] text-muted">
       {draft.length} Kategorien · {totalExts} Endungen · gespeichert in
-      <span class="mono">~/.config/diskforge/categories.json</span>
+      <span class="mono">~/.config/fylr/categories.json</span>
     </span>
     {#if dirty}<span class="badge badge-warn">ungespeichert</span>{/if}
     <div class="ml-auto flex items-center gap-2">

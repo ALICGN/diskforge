@@ -50,7 +50,7 @@
       <HardDrive class="h-4 w-4 text-[#071018]" />
     </div>
     <div class="leading-tight">
-      <div class="text-[13px] font-semibold tracking-tight">DiskForge</div>
+      <div class="text-[13px] font-semibold tracking-tight">Fylr</div>
       <div class="text-[9.5px] text-[#5f6d84]">Scanner · Dedupe · Sorter</div>
     </div>
   </div>
@@ -136,7 +136,7 @@
     <div class="mt-auto flex flex-col gap-1 border-t border-line p-2 text-[10px] text-[#4b586e]">
       <span>Tauri v2 · Rust · Svelte 5</span>
       <span>BLAKE3 · ignore · rayon</span>
-      <span class="mono truncate">~/.config/diskforge/</span>
+      <span class="mono truncate">~/.config/fylr/</span>
     </div>
   </aside>
 

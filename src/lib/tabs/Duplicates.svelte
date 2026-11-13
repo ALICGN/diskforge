@@ -210,7 +210,7 @@
       <div class="rounded-2xl border border-line bg-panel2 p-4"><Copy class="h-7 w-7 text-accent" /></div>
       <div class="text-[14px] font-semibold">Noch keine Duplikat-Analyse</div>
       <p class="max-w-md text-[12px] leading-relaxed text-muted">
-        DiskForge gruppiert zuerst nach exakter Byte-Größe und hasht nur echte Kandidaten mit
+        Fylr gruppiert zuerst nach exakter Byte-Größe und hasht nur echte Kandidaten mit
         BLAKE3. Dateien über 50 MB werden über Kopf- und Fuß-64 KB vorgefiltert.
       </p>
       <button class="btn btn-primary" onclick={() => app.findDuplicates()} disabled={!app.summary || app.busy}>

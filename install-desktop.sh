@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Bindet DiskForge ins KDE-/CachyOS-Anwendungsmenü ein (nur für den aktuellen Nutzer).
+# Bindet Fylr ins KDE-/CachyOS-Anwendungsmenü ein (nur für den aktuellen Nutzer).
 set -euo pipefail
 
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BIN="$SRC/src-tauri/target/release/diskforge"
+BIN="$SRC/src-tauri/target/release/fylr"
 ICONS="$SRC/src-tauri/icons"
 
 [[ -x "$BIN" ]] || { echo "Release-Binary fehlt: $BIN (erst: npx tauri build --no-bundle)"; exit 1; }
@@ -14,7 +14,7 @@ ICON_ROOT="$HOME/.local/share/icons/hicolor"
 
 mkdir -p "$BIN_DIR" "$APP_DIR"
 
-install -m 755 "$BIN" "$BIN_DIR/diskforge"
+install -m 755 "$BIN" "$BIN_DIR/fylr"
 
 for size in 32 64 128 256 512; do
   dir="$ICON_ROOT/${size}x${size}/apps"
@@ -27,33 +27,33 @@ for size in 32 64 128 256 512; do
     512) src="$ICONS/icon.png" ;;
   esac
   if [[ -f "$src" ]]; then
-    magick "$src" -resize "${size}x${size}" "$dir/diskforge.png"
+    magick "$src" -resize "${size}x${size}" "$dir/fylr.png"
   fi
 done
 # SVG für Skalierung / HiDPI
 mkdir -p "$ICON_ROOT/scalable/apps"
-[[ -f "$ICONS/icon.svg" ]] && install -m 644 "$ICONS/icon.svg" "$ICON_ROOT/scalable/apps/diskforge.svg"
+[[ -f "$ICONS/icon.svg" ]] && install -m 644 "$ICONS/icon.svg" "$ICON_ROOT/scalable/apps/fylr.svg"
 
-cat > "$APP_DIR/diskforge.desktop" <<EOF
+cat > "$APP_DIR/fylr.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=DiskForge
+Name=Fylr
 GenericName=Festplatten-Analyse & Sortierung
 Comment=Laufwerke scannen, Duplikate per BLAKE3 finden und Dateien sortieren
 Comment[de]=Laufwerke scannen, Duplikate per BLAKE3 finden und Dateien sortieren
-Exec=${BIN_DIR}/diskforge
-Icon=diskforge
+Exec=${BIN_DIR}/fylr
+Icon=fylr
 Terminal=false
 Categories=Utility;FileTools;System;KDE;
 Keywords=Disk;Duplikate;Duplicates;Sortieren;Scanner;NTFS;Festplatte;Aufräumen;
 Keywords[de]=Festplatte;Duplikate;Sortieren;Scanner;NTFS;Aufräumen;Speicherplatz;
 StartupNotify=true
-StartupWMClass=diskforge
+StartupWMClass=fylr
 X-GNOME-UsesNotifications=true
 EOF
 
-chmod 644 "$APP_DIR/diskforge.desktop"
+chmod 644 "$APP_DIR/fylr.desktop"
 
 command -v update-desktop-database >/dev/null && update-desktop-database "$APP_DIR" || true
 command -v gtk-update-icon-cache >/dev/null && gtk-update-icon-cache -f -t "$ICON_ROOT" >/dev/null 2>&1 || true
@@ -63,10 +63,10 @@ for kb in kbuildsycoca6 kbuildsycoca5; do
 done
 
 if command -v desktop-file-validate >/dev/null; then
-  desktop-file-validate "$APP_DIR/diskforge.desktop" && echo "desktop-file-validate: ok"
+  desktop-file-validate "$APP_DIR/fylr.desktop" && echo "desktop-file-validate: ok"
 fi
 
 echo "Installiert:"
-echo "  $BIN_DIR/diskforge"
-echo "  $APP_DIR/diskforge.desktop"
+echo "  $BIN_DIR/fylr"
+echo "  $APP_DIR/fylr.desktop"
 echo "  Icons in $ICON_ROOT"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Erzeugt einen neutralen Demo-Datensatz für Screenshots/Doku (keine echten Daten).
 set -euo pipefail
-ROOT="$HOME/diskforge-demo"
+ROOT="$HOME/fylr-demo"
 rm -rf "$ROOT"
 mkdir -p "$ROOT"/{quell/{Bilder,Videos,Audio,Dokumente,Archive,Skripte,Diverses},ziel}
 cd "$ROOT/quell"

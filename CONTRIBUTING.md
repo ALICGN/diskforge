@@ -1,4 +1,4 @@
-# Mitmachen bei DiskForge
+# Mitmachen bei Fylr
 
 Danke, dass du mithelfen willst! Dieses Dokument beschreibt, wie du das Projekt
 lokal aufsetzt, welche Konventionen gelten und wie ein Pull Request abläuft.
@@ -12,8 +12,8 @@ lokal aufsetzt, welche Konventionen gelten und wie ein Pull Request abläuft.
 ## 2. Lokales Setup
 
 ```bash
-git clone https://github.com/ALICGN/diskforge.git
-cd diskforge
+git clone https://github.com/ALICGN/fylr.git
+cd fylr
 npm install
 npm run tauri dev          # startet Vite + Rust-Backend mit Hot-Reload
 ```
@@ -86,7 +86,7 @@ Erlaubte Typen: `feat`, `fix`, `docs`, `refactor`, `test`, `perf`, `build`, `ci`
 ## 7. Bugs melden
 
 Bitte mit:
-- DiskForge-Version (`v0.1.0` in der Seitenleiste) und Linux-Distro/Desktop
+- Fylr-Version (`v0.1.0` in der Seitenleiste) und Linux-Distro/Desktop
 - Dateisystem des betroffenen Laufwerks (ntfs3, fuseblk, btrfs, ext4 …)
 - Schritten zum Nachstellen und **anonymisierten** Pfaden
 - Relevantem Log: App aus dem Terminal starten und die Ausgabe mitschicken

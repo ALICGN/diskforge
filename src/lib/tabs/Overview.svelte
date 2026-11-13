@@ -278,7 +278,7 @@
           </div>
           <div class="text-[14px] font-semibold">Bereit zum Scannen</div>
           <p class="max-w-md text-[12px] leading-relaxed text-muted">
-            Laufwerk oben wählen oder einen Pfad eingeben. DiskForge traversiert parallel über alle
+            Laufwerk oben wählen oder einen Pfad eingeben. Fylr traversiert parallel über alle
             Kerne ({app.sys.threads}), fasst Endungen case-insensitiv zusammen und ordnet sie deinen
             Überkategorien zu.
           </p>

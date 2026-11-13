@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: "DiskForge ${{ github.ref_name }}"
+          releaseName: "Fylr ${{ github.ref_name }}"
           releaseBody: "Siehe [CHANGELOG.md](CHANGELOG.md)."
           releaseDraft: true
           prerelease: false
@@ -58,8 +58,8 @@ jobs:
       - name: Artefakte sichern
         uses: actions/upload-artifact@v7
         with:
-          name: diskforge-${{ matrix.target }}
+          name: fylr-${{ matrix.target }}
           path: |
-            src-tauri/target/${{ matrix.target }}/release/diskforge
+            src-tauri/target/${{ matrix.target }}/release/fylr
             src-tauri/target/${{ matrix.target }}/release/bundle/**
           if-no-files-found: warn

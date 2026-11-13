@@ -690,7 +690,7 @@ mod tests {
 
     impl Drop for HomeGuard {
         fn drop(&mut self) {
-            std::env::remove_var("DISKFORGE_HOME");
+            std::env::remove_var("FYLR_HOME");
             let _ = fs::remove_dir_all(&self.path);
         }
     }
@@ -698,7 +698,7 @@ mod tests {
     fn test_home(tag: &str) -> HomeGuard {
         let lock = LOG_LOCK.lock().unwrap_or_else(|e| e.into_inner());
         let path = tmpdir(&format!("home-{}", tag));
-        std::env::set_var("DISKFORGE_HOME", &path);
+        std::env::set_var("FYLR_HOME", &path);
         HomeGuard { _lock: lock, path }
     }
 

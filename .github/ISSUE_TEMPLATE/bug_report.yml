@@ -11,7 +11,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: DiskForge-Version
+      label: Fylr-Version
       description: Steht unten links in der Seitenleiste
       placeholder: v0.1.0
     validations:

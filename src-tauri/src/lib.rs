@@ -35,5 +35,5 @@ pub fn run() {
             commands::reveal_path,
         ])
         .run(tauri::generate_context!())
-        .expect("DiskForge konnte nicht gestartet werden");
+        .expect("Fylr konnte nicht gestartet werden");
 }

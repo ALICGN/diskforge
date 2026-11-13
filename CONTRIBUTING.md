@@ -12,7 +12,7 @@ lokal aufsetzt, welche Konventionen gelten und wie ein Pull Request abläuft.
 ## 2. Lokales Setup
 
 ```bash
-git clone https://github.com/OWNER/diskforge.git
+git clone https://github.com/ALICGN/diskforge.git
 cd diskforge
 npm install
 npm run tauri dev          # startet Vite + Rust-Backend mit Hot-Reload

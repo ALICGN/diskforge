@@ -97,7 +97,7 @@ rückgängig machen — inklusive Wiederherstellung der Ordnerstruktur.
 
 ### Fertiges Paket (empfohlen)
 ```bash
-git clone https://github.com/OWNER/diskforge.git
+git clone https://github.com/ALICGN/diskforge.git
 cd diskforge
 ./install-desktop.sh          # nach dem Build, siehe unten
 ```

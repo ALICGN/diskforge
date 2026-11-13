@@ -7,12 +7,12 @@
   "author": "Ali Utlu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/diskforge.git"
+    "url": "git+https://github.com/ALICGN/diskforge.git"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/diskforge/issues"
+    "url": "https://github.com/ALICGN/diskforge/issues"
   },
-  "homepage": "https://github.com/OWNER/diskforge#readme",
+  "homepage": "https://github.com/ALICGN/diskforge#readme",
   "keywords": [
     "tauri",
     "rust",

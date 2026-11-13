@@ -6,8 +6,8 @@ authors = ["Ali Utlu"]
 edition = "2021"
 rust-version = "1.77"
 license = "MIT"
-repository = "https://github.com/OWNER/diskforge"
-homepage = "https://github.com/OWNER/diskforge"
+repository = "https://github.com/ALICGN/diskforge"
+homepage = "https://github.com/ALICGN/diskforge"
 keywords = ["tauri", "disk-analyzer", "duplicates", "blake3", "file-organizer"]
 categories = ["filesystem", "gui"]
 

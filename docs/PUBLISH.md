@@ -15,16 +15,16 @@ gh repo create diskforge --public --source=. --remote=origin \
 Ohne `gh`:
 
 ```bash
-git remote add origin git@github.com:OWNER/diskforge.git
+git remote add origin git@github.com:ALICGN/diskforge.git
 git push -u origin main
 ```
 
-**Vor dem Push prüfen:** `OWNER` in `README.md`, `CONTRIBUTING.md`,
+**Vor dem Push prüfen:** `ALICGN` in `README.md`, `CONTRIBUTING.md`,
 `package.json`, `src-tauri/Cargo.toml` und `.github/ISSUE_TEMPLATE/config.yml`
 durch den echten GitHub-Benutzernamen ersetzen:
 
 ```bash
-git grep -l OWNER | xargs sed -i 's/OWNER/DEINNAME/g'
+git grep -l ALICGN | xargs sed -i 's/ALICGN/DEINNAME/g'
 git commit -am "chore: Repository-URLs auf eigenen Account setzen"
 ```
 
@@ -79,7 +79,7 @@ dort Release-Notes aus `CHANGELOG.md` einsetzen und veröffentlichen.
 
 ## 5. Danach
 
-- Repository auf [GitHub Social Preview](https://github.com/OWNER/diskforge/settings)
+- Repository auf [GitHub Social Preview](https://github.com/ALICGN/diskforge/settings)
   setzen: `docs/screenshots/overview.png` (1280 × 640 empfohlen).
 - In `README.md` die Roadmap-Punkte pflegen, sobald Issues existieren.
 - Screenshots neu erzeugen: `./scripts/make-demo-data.sh`, App starten,

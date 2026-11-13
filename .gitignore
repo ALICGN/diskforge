@@ -28,3 +28,7 @@ testdata/
 
 # Vendored Crates (cargo vendor, nur als Release-Asset)
 src-tauri/vendor/
+
+# Lokal gebautes pacman-Repo (veröffentlicht auf gh-pages)
+repo/
+.repo-build/

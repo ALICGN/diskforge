@@ -125,8 +125,23 @@ npm run tauri build -- --no-bundle
 Das Release-Binary liegt danach unter `src-tauri/target/release/fylr` (ca. 7 MB).
 
 **Pakete:** Fertige Builds liegen unter
-[Releases](https://github.com/ALICGN/fylr/releases) (`.deb`, `.AppImage`),
-AUR-Paket: `fylr-bin` (siehe [`docs/PACKAGING.md`](docs/PACKAGING.md)).
+[Releases](https://github.com/ALICGN/fylr/releases) (`.deb`, `.AppImage`).
+
+**Arch/CachyOS per pacman** (eigenes Repository, sofort verfügbar):
+
+```ini
+# /etc/pacman.conf
+[fylr]
+SigLevel = Optional TrustAll
+Server = https://alicgn.github.io/fylr/x86_64
+```
+
+```bash
+sudo pacman -Sy && sudo pacman -S fylr-bin
+```
+
+AUR-Paket `fylr-bin` ist vorbereitet (siehe [`docs/PACKAGING.md`](docs/PACKAGING.md)),
+der Upload wartet auf die Wiedereröffnung der AUR-Registrierung.
 
 **Deinstallieren:**
 ```bash

@@ -77,6 +77,52 @@ gh release upload v0.2.0 /tmp/fylr-0.2.0-vendor.tar.gz
 
 Ohne dieses Asset schlägt `fylr` fehl — dann ausschließlich `fylr-bin` anbieten.
 
+## 5b. Eigenes pacman-Repository (sofort nutzbar, unabhängig vom AUR)
+
+Solange die AUR-Registrierung geschlossen ist, liefert GitHub Pages das Paket direkt aus:
+
+```
+https://alicgn.github.io/fylr/x86_64
+```
+
+Client-Einrichtung:
+
+```ini
+# /etc/pacman.conf  – ganz unten anhängen
+[fylr]
+SigLevel = Optional TrustAll
+Server = https://alicgn.github.io/fylr/x86_64
+```
+
+```bash
+sudo pacman -Sy
+sudo pacman -S fylr-bin
+```
+
+**Neue Version veröffentlichen:**
+
+```bash
+# 1. pkgver in packaging/aur/fylr-bin/PKGBUILD erhöhen, Release + Deb hochladen
+# 2. sha256 des neuen Deb einsetzen
+sha256sum Fylr_<ver>_amd64.deb
+# 3. Paket bauen und Repo-DB neu erzeugen
+./packaging/repo/build-repo.sh
+# 4. auf den gh-pages-Zweig schieben
+cd repo && cp -r x86_64 /tmp/pages-stage/ 2>/dev/null || true
+```
+
+Konkret für den Upload:
+
+```bash
+git worktree add /tmp/fylr-pages gh-pages
+cp repo/x86_64/* /tmp/fylr-pages/x86_64/
+cd /tmp/fylr-pages && git add -A && git commit -m "repo: fylr-bin <ver>" && git push
+cd - && git worktree remove /tmp/fylr-pages
+```
+
+Das Repository ist **nicht signiert** (`SigLevel = Optional TrustAll` nötig). Wer das nicht
+will, installiert die Pakete aus den GitHub-Releases oder baut selbst (`fylr`-PKGBUILD).
+
 ## 6. AUR-Regeln, die wir einhalten
 
 - `pkgname` = `fylr-bin`, `provides`/`conflicts` gesetzt, damit sich `-bin`, `fylr` und

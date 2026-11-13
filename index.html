@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Fylr – pacman-Repository</title>
+<style>body{background:#0b0e14;color:#e6edf3;font-family:system-ui,sans-serif;max-width:46rem;margin:4rem auto;padding:0 1.2rem;line-height:1.6}
+code{background:#151a23;padding:.15rem .4rem;border-radius:.3rem}a{color:#4f8cff}pre{background:#151a23;padding:1rem;border-radius:.5rem;overflow:auto}</style></head>
+<body><h1>Fylr</h1>
+<p>pacman-Repository für <a href="https://github.com/ALICGN/fylr">Fylr</a> – Disk-Analyzer, Duplikatfinder und Dateisortierer.</p>
+<h2>Einrichten</h2>
+<pre>[fylr]
+SigLevel = Optional TrustAll
+Server = https://alicgn.github.io/fylr/x86_64</pre>
+<p>Danach:</p>
+<pre>sudo pacman -Sy
+sudo -S -p '' pacman -S fylr-bin</pre>
+<p>Das Repository ist nicht signiert; <code>SigLevel = Optional TrustAll</code> akzeptiert es.
+Alternativ direkt die Pakete aus den <a href="https://github.com/ALICGN/fylr/releases">Releases</a> installieren.</p>
+</body></html>

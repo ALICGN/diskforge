@@ -1,0 +1,27 @@
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+src-tauri/gen/android/
+src-tauri/gen/apple/
+
+# Betriebssystem / Editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Lokale Notizen und Testartefakte (nicht ins Repo)
+STATUS.md
+*.log
+tmp/
+testdata/

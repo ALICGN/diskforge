@@ -1,0 +1,41 @@
+[package]
+name = "diskforge"
+version = "0.1.0"
+description = "Fast disk analyzer, duplicate finder (BLAKE3) and file organizer for Linux"
+authors = ["Ali Utlu"]
+edition = "2021"
+rust-version = "1.77"
+license = "MIT"
+repository = "https://github.com/OWNER/diskforge"
+homepage = "https://github.com/OWNER/diskforge"
+keywords = ["tauri", "disk-analyzer", "duplicates", "blake3", "file-organizer"]
+categories = ["filesystem", "gui"]
+
+[lib]
+name = "diskforge_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ignore = "0.4"
+rayon = "1"
+blake3 = { version = "1", features = ["rayon"] }
+imagesize = "0.15"
+mp4parse = "0.17"
+dirs = "7"
+num_cpus = "1"
+filetime = "0.2"
+libc = "0.2"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

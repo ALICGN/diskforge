@@ -1,0 +1,35 @@
+name: Funktionswunsch
+description: Idee oder Verbesserung vorschlagen
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Welches Problem löst das?
+      placeholder: Beim Sortieren von Fotos nach Aufnahmedatum …
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Vorgeschlagene Lösung
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativen
+      description: Was hast du bisher benutzt (andere Tools, Shell-Skripte)?
+  - type: dropdown
+    id: area
+    attributes:
+      label: Bereich
+      options:
+        - Scan / Analyse
+        - Kategorien
+        - Duplikate
+        - Sortieren
+        - Oberfläche / Bedienung
+        - Performance
+        - Dokumentation

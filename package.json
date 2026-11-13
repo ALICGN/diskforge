@@ -1,0 +1,52 @@
+{
+  "name": "diskforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Schneller Disk-Analyzer, Duplikatfinder (BLAKE3) und Dateisortierer für Linux – Tauri 2, Rust und Svelte 5",
+  "license": "MIT",
+  "author": "Ali Utlu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/diskforge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/diskforge/issues"
+  },
+  "homepage": "https://github.com/OWNER/diskforge#readme",
+  "keywords": [
+    "tauri",
+    "rust",
+    "svelte",
+    "disk-analyzer",
+    "duplicate-finder",
+    "file-organizer",
+    "blake3",
+    "linux",
+    "ntfs"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "check": "svelte-check --tsconfig ./jsconfig.json",
+    "fmt": "cargo fmt --manifest-path src-tauri/Cargo.toml --all",
+    "lint": "cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",
+    "test": "cargo test --manifest-path src-tauri/Cargo.toml --all",
+    "demo-data": "bash scripts/make-demo-data.sh"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.12.4"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "@tauri-apps/cli": "^2.12.4",
+    "lucide-svelte": "^1.0.1",
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.8",
+    "tailwindcss": "^4.3.5",
+    "vite": "^8.3.8"
+  }
+}

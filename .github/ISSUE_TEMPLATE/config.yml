@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Frage stellen
+    url: https://github.com/OWNER/diskforge/discussions
+    about: Für allgemeine Fragen und Ideen bitte Discussions nutzen.
+  - name: Sicherheitslücke melden
+    url: https://github.com/OWNER/diskforge/security/advisories/new
+    about: Bitte nicht öffentlich als Issue melden.

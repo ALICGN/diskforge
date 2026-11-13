@@ -1,6 +1,6 @@
 [package]
 name = "fylr"
-version = "0.1.0"
+version = "0.2.0"
 description = "Fast disk analyzer, duplicate finder (BLAKE3) and file organizer for Linux"
 authors = ["Ali Utlu"]
 edition = "2021"

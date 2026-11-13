@@ -1,6 +1,6 @@
 {
   "name": "fylr",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Schneller Disk-Analyzer, Duplikatfinder (BLAKE3) und Dateisortierer für Linux – Tauri 2, Rust und Svelte 5",
   "license": "MIT",

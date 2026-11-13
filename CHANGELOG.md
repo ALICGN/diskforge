@@ -6,6 +6,18 @@ Versionierung nach [Semantic Versioning](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-11-13
+
+### Geändert — Umbenennung in Fylr
+- Projektname von **DiskForge** auf **Fylr** geändert: Binary `fylr`, Crate `fylr_lib`,
+  Tauri-Identifier `com.alicgn.fylr`, Fenstertitel „Fylr — Disk Analyzer & Sorter".
+- Konfigurationsverzeichnis: `~/.config/diskforge/` → `~/.config/fylr/`
+  (`categories.json`, `move_log.json`). Bestehende Regeln müssen einmalig kopiert werden.
+- Test-Isolation über `FYLR_HOME` statt `DISKFORGE_HOME`.
+- Menüeintrag und Icons heißen `fylr`, Kategorien im `.desktop` korrigiert
+  (`Utility;FileTools;Qt;KDE;`).
+- Screenshots neu erzeugt, GitHub-Repo umbenannt: `ALICGN/fylr`.
+
 ## [0.1.0] — 2026-11-13
 
 ### Hinzugefügt
